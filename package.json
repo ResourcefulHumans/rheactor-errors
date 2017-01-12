@@ -1,0 +1,50 @@
+{
+  "name": "rheactor-errors",
+  "description": "A collection of errors",
+  "version": "0.0.0-development",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "NODE_ENV=testing mocha --compilers js:babel-register --reporter=dot --timeout=1350 test/\\*\\*/\\*.js",
+    "test:coverage": "NODE_ENV=nyc babel src --out-dir instrumented-src > /dev/null && nyc --reporter=text-summary --reporter=lcov npm run test",
+    "test:coverage-travis": "npm run test:coverage && codeclimate-test-reporter < ./coverage/lcov.info && rm -rf ./coverage",
+    "lint": "standard",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "precommit": "npm run lint && npm test",
+    "commitmsg": "validate-commit-msg"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ResourcefulHumans/rheactor-errors.git"
+  },
+  "author": "Resourceful Humans <info@resourceful-humans.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ResourcefulHumans/rheactor-errors/issues"
+  },
+  "homepage": "https://github.com/ResourcefulHumans/rheactor-errors#readme",
+  "dependencies": {
+    "tcomb": "^3.2.13"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-preset-env": "^1.1.1",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-register": "^6.18.0",
+    "chai": "^3.5.0",
+    "codeclimate-test-reporter": "^0.4.0",
+    "husky": "<2.0.0",
+    "istanbul": "^0.4.4",
+    "mocha": "^3.2.0",
+    "mocha-lcov-reporter": "^1.2.0",
+    "nyc": "^10.0.0",
+    "semantic-release": "^6.3.2",
+    "standard": "^8.6.0",
+    "validate-commit-msg": "^2.6.1"
+  },
+  "files": [
+    "dist",
+    "src",
+    "test",
+    "README.md"
+  ]
+}
