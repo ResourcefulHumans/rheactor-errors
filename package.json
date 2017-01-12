@@ -1,8 +1,9 @@
 {
-  "name": "rheactor-errors",
+  "name": "@resourcefulhumans/rheactor-errors",
   "description": "A collection of errors",
   "version": "0.0.0-development",
   "main": "dist/index.js",
+  "public": true,
   "scripts": {
     "test": "NODE_ENV=testing mocha --compilers js:babel-register --reporter=dot --timeout=1350 test/\\*\\*/\\*.js",
     "test:coverage": "NODE_ENV=nyc babel src --out-dir instrumented-src > /dev/null && nyc --reporter=text-summary --reporter=lcov npm run test",
