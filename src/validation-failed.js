@@ -1,22 +1,18 @@
 export class ValidationFailedError {
   constructor (message, data, error) {
     this.name = ValidationFailedError.name
-    this.message = message
     this.data = data
     this.error = error
-    this.stack = (new Error(this.message)).stack
-  }
-
-  toString () {
-    let message = this.message
+    let msg = message
     if (this.error && this.error.isJoi) {
       const details = this.error.details.map(detail => detail.message).join(', ')
-      message += ` (${details}) `
+      msg += ` (${details}) `
     }
     if (this.data) {
-      message += ' ' + JSON.Stringify(this.data)
+      msg += ' ' + JSON.stringify(this.data)
     }
-    return message
+    this.message = msg
+    this.stack = (new Error(this.message)).stack
   }
 
   /**

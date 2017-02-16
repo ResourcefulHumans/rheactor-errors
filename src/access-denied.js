@@ -1,17 +1,13 @@
 export class AccessDeniedError {
   constructor (resource, message) {
     this.name = AccessDeniedError.name
-    this.message = message
     this.resource = resource
-    this.stack = (new Error(this.message)).stack
-  }
-
-  toString () {
     let msg = 'Access denied: ' + this.resource
-    if (this.message) {
-      msg += ' (' + this.message + ')'
+    if (message) {
+      msg += ' (' + message + ')'
     }
-    return msg
+    this.message = msg
+    this.stack = (new Error(this.message)).stack
   }
 
   /**

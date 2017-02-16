@@ -48,6 +48,9 @@ describe('Errors', () => {
     it('should have the correct name', () => {
       expect((new UnhandledDomainEventError()).name).to.equal('UnhandledDomainEventError')
     })
+    it('should have the event name in the message', () => {
+      expect((new UnhandledDomainEventError('SomeEvent')).toString()).to.equal('UnhandledDomainEventError: Unhandled domain event "SomeEvent"')
+    })
   })
   describe('ValidationFailedError', () => {
     it('should have the correct name', () => {

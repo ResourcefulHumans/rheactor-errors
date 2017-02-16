@@ -1,13 +1,13 @@
 export class UnhandledDomainEventError {
   constructor (event) {
     this.name = UnhandledDomainEventError.name
-    this.message = 'Unhandled domain event'
     this.event = event
+    let msg = 'Unhandled domain event'
+    if (event) {
+      msg += ` "${this.event}"`
+    }
+    this.message = msg
     this.stack = (new Error(this.message)).stack
-  }
-
-  toString () {
-    return `${this.message}: "${this.event}"`
   }
 
   /**
