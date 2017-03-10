@@ -1,4 +1,4 @@
-import {AccessDeniedError, ApplicationError, ConflictError, EntryAlreadyExistsError, EntryDeletedError, EntryNotFoundError, PaymentRequiredError, TokenExpiredError, UnhandledDomainEventError, ValidationFailedError} from '../src'
+import {AccessDeniedError, ApplicationError, ConflictError, EntryAlreadyExistsError, EntryDeletedError, EntryNotFoundError, PaymentRequiredError, TokenExpiredError, UnhandledDomainEventError, ValidationFailedError, ReanimationFailedError} from '../src'
 import {expect} from 'chai'
 
 /* global describe, it */
@@ -55,6 +55,17 @@ describe('Errors', () => {
   describe('ValidationFailedError', () => {
     it('should have the correct name', () => {
       expect((new ValidationFailedError()).name).to.equal('ValidationFailedError')
+    })
+  })
+  describe('ReanimationFailedError', () => {
+    it('should have the correct name', () => {
+      expect((new ReanimationFailedError()).name).to.equal('ReanimationFailedError')
+    })
+    it('should accept a message', () => {
+      expect((new ReanimationFailedError('some message')).message).to.equal('some message')
+    })
+    it('should accept data', () => {
+      expect((new ReanimationFailedError('some message', {foo: 'bar'})).data).to.deep.equal({foo: 'bar'})
     })
   })
 })
